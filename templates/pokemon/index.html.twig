@@ -1,0 +1,23 @@
+<html>
+    <head>
+    <title> Pokémon Cards </title>
+    </head>
+    <body>
+        <div class="flex justify-items-center">
+            {% for card in cards %}
+                <div>
+                    <a href="{{path('card_details', {id: card.id})}}">
+                        <img src="{{card.images.small}}" alt="{{card.name}}" />
+                    </a>
+                    <p><strong>Pokemon ID:</strong> 
+                    {{ card.id }}</p>
+                    <p><strong>Pokemon Name:</strong>
+                    {{ card.name }}</p>
+                    <p><strong>Pokemon Type:</strong>
+                    {{ card.types.0 }}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+    </body
+</html>

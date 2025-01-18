@@ -1,0 +1,32 @@
+<html>
+    <head>
+    <title> {{card.name}} </title>
+    </head>
+    <body>
+      <div class="flex">
+        <div class="w-2/3">
+          <h1> {{card.name}} </h1>
+          <img src="{{card.images.large}}" alt="{{card.name}}" />
+        </div>
+        <div class="w-1/3">
+          <p><strong>Name:</strong> {{card.name}} </p>
+          <p><strong>Pokemon Id:</strong> {{card.id}} </p>
+          <p><strong>Type:</strong> {{card.types|join(', ')}} </p>
+          <p><strong>Resistances:</strong> 
+          {% for resistance in card.resistances %}
+            <p>Type: {{resistance.type}}</p>
+            <p>Value: {{resistance.value}}</p>
+          {% endfor %} </p>
+          <p><strong>Weaknesses:</strong> {% for weaknesses in card.weaknesses %}
+            <p>Type: {{weaknesses.type}}</p>
+            <p>Value: {{weaknesses.value}}</p>
+          {% endfor %}</p>
+          <p><strong>Attacks:</strong> {% for attack in card.attacks %}
+            <p>Name: {{attack.name}}</p>
+            <p>Damage: {{attack.damage}}</p>
+          {% endfor %}</p>
+        </div>
+      </div>
+          <a href="{{path('home')}}"> Back to Cards </a>
+    </body
+</html>
