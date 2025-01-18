@@ -1,32 +1,80 @@
-<html>
-    <head>
-    <title> {{card.name}} </title>
-    </head>
-    <body>
-      <div class="flex">
-        <div class="w-2/3">
-          <h1> {{card.name}} </h1>
-          <img src="{{card.images.large}}" alt="{{card.name}}" />
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ card.name }} {% endblock %}
+
+{% block body %}
+  <div class="flex flex-row bg-gray-200">
+    <div class=" w-1/3">
+      <img src="{{card.images.large}}" alt="{{card.name}}" />
+    </div>
+    <div class="w-2/3 px-8 py-10">
+      <div class="flex space-x-6 py-5">
+        <div class="bg-gray-400 w-1/4 h-24 rounded-lg text-white px-4 py-3">
+          <h1 class="text-2xl">Name: </h1>
+          <p>{{card.name}}</p>
         </div>
-        <div class="w-1/3">
-          <p><strong>Name:</strong> {{card.name}} </p>
-          <p><strong>Pokemon Id:</strong> {{card.id}} </p>
-          <p><strong>Type:</strong> {{card.types|join(', ')}} </p>
-          <p><strong>Resistances:</strong> 
-          {% for resistance in card.resistances %}
-            <p>Type: {{resistance.type}}</p>
-            <p>Value: {{resistance.value}}</p>
-          {% endfor %} </p>
-          <p><strong>Weaknesses:</strong> {% for weaknesses in card.weaknesses %}
-            <p>Type: {{weaknesses.type}}</p>
-            <p>Value: {{weaknesses.value}}</p>
-          {% endfor %}</p>
-          <p><strong>Attacks:</strong> {% for attack in card.attacks %}
-            <p>Name: {{attack.name}}</p>
-            <p>Damage: {{attack.damage}}</p>
-          {% endfor %}</p>
+        <div class="bg-gray-400 w-1/4 h-24 rounded-lg text-white px-4 py-3">
+          <h1 class="text-2xl">Pokemon Id: </h1>
+          <p>{{card.id}}</p>
+        </div>
+        <div class="bg-gray-400 w-1/4 h-24 rounded-lg text-white px-4 py-3">
+          <h1 class="text-2xl">Type: </h1>
+          <p class="">{{card.types|join(', ')}}</p>
         </div>
       </div>
-          <a href="{{path('home')}}"> Back to Cards </a>
-    </body
-</html>
+      <div class="flex space-x-6 py-5">
+        <div class="bg-gray-400 w-1/4 h-24 rounded-lg text-white px-4 py-3">
+          <h1 class="text-2xl">Resistances: </h1>
+        </div>
+        {% for resistance in card.resistances %}
+          <div class="bg-gray-400 w-1/4 h-24 rounded-lg text-white px-4 py-3">
+            <div class="flex">
+              <h1 class="text-2xl">Type: </h1>
+              <p class="py-1.5">{{resistance.type}}</p>
+            </div>
+            <div class="flex">
+              <h1 class="text-2xl">Value: </h1>
+              <p class="py-1.5">{{resistance.value}}</p>
+            </div>
+          </div>
+        {% endfor %} </p>
+      </div>
+      <div class="flex space-x-6 py-5">
+        <div class="bg-gray-400 w-1/4 h-24 rounded-lg text-white px-4 py-3">
+          <h1 class="text-2xl">Weaknesses: </h1>
+        </div>
+        {% for weaknesses in card.weaknesses %}
+          <div class="bg-gray-400 w-1/4 h-24 rounded-lg text-white px-4 py-3">
+            <div class="flex">
+              <h1 class="text-2xl">Type: </h1>
+              <p class="py-1.5">{{weaknesses.type}}</p>
+            </div>
+            <div class="flex">
+              <h1 class="text-2xl">Value: </h1>
+              <p class="py-1.5">{{weaknesses.value}}</p>
+            </div>
+          </div>
+        {% endfor %} </p>
+      </div>
+      <div class="flex space-x-6 py-5">
+        <div class="bg-gray-400 w-1/4 h-24 rounded-lg text-white px-4 py-3">
+          <h1 class="text-2xl">Attacks: </h1>
+        </div>
+        {% for attack in card.attacks %}
+          <div class=" bg-gray-400 w-1/4 h-24 rounded-lg text-white px-4 py-3">
+            <div class="flex">
+              <h1 class="text-2xl">Name: </h1>
+              <p class="py-1.5">{{attack.name}}</p>
+            </div>
+            <div class="flex">
+              <h1 class="text-2xl">Damage: </h1>
+              <p class="py-1.5"> {{attack.damage}}</p>
+            </div>
+          </div>
+        {% endfor %} </p>
+      </div>
+    </div>
+  </div>
+  <br>
+  <a href="{{path('home')}}" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition"> Back to Cards </a>
+{% endblock %}

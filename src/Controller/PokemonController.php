@@ -20,7 +20,7 @@ class PokemonController extends AbstractController
     }
 
     #[Route('/card/{id}', name: 'card_details')]
-    public function details(PokemonRepository $repository, string $id): Response
+    public function details(PokemonRepository $repository, String $id): Response
     {
       $card = $repository->getCardDetails($id);
       return $this->render('pokemon/details.html.twig', [
