@@ -23,7 +23,6 @@ class PokemonController extends AbstractController
     public function details(PokemonRepository $repository, string $id): Response
     {
       $card = $repository->getCardDetails($id);
-      // dd($card);
       return $this->render('pokemon/details.html.twig', [
         'card'=> $card,
       ]);
